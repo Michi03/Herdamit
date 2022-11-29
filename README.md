@@ -13,7 +13,7 @@ Ganz pauschal lässt sich das nicht beantworten, da es sich hier um eine [Browse
 
 ### Firefox
 Firefox-Nutzer:innen können sich glücklich schätzen.
-Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/1.1/cdecc117410c4eb1a757-1.1.xpi) klicken.
+Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/download/1.1/cdecc117410c4eb1a757-1.1.xpi) klicken.
 Ihr müsst dann einmal bestätigen, dass ihr das add-on installieren wollt und dann zustimmen, dass es auf "eure Daten" auf folgenden Seiten zugreifen darf.
 
 * https://meiner-elibrary.de/viewer2.0/pdfviewer/index/viewer
