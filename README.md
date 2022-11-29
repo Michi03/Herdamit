@@ -7,8 +7,8 @@ Bis jetzt unterstützen wir die folgenden Verläge:
 * Ja lol, das war's schon... Kommt aber (vielleicht) bald mehr
 
 ## Installation
-Das wichtigste zuerst, wie installiere ich den Bums?
-Ganz pauschal lässt sich das nicht beantworten, da es sich hier um eine [Browser-](https://de.wikipedia.org/wiki/Webbrowser)Erweiterung (bzw. *Erweiterung* oder auch *add-on*) handelt und die Installation von extensions je nach verwendetem Browser (die großen sind Firefox, Chrome und Safari[^1]) unterschiedlich verläuft.
+Das Wichtigste zuerst: wie installiere ich den Bums?
+Ganz pauschal lässt sich das nicht beantworten, da es sich hier um eine [Browser-](https://de.wikipedia.org/wiki/Webbrowser)Erweiterung (bzw. *add-on* oder auch *extension*) handelt und die Installation von extensions je nach verwendetem Browser (die großen sind Firefox, Chrome und Safari[^1]) unterschiedlich verläuft.
 ***Herdamit*** wurde explizit entwickelt für Firefox und zusätzlich getestet für [Chromium](https://de.wikipedia.org/wiki/Chromium_(Browser)), sodass die extension auch unter allen entsprechenden Derivaten ([Google Chrome](https://de.wikipedia.org/wiki/Google_Chrome), [Microsoft Edge](https://de.wikipedia.org/wiki/Microsoft_Edge), [Opera](https://de.wikipedia.org/wiki/Opera_(Browser)), [Brave](https://de.wikipedia.org/wiki/Brave_(Browser)), etc.) funktionieren *sollte*.
 
 ### Firefox
@@ -31,7 +31,7 @@ Man muss dann oben rechts über den Slider den **Entwicklermodus** aktivieren.
 Da sollte es dann einen Button **Entpackte Erweiterung laden** geben.
 Da klickt ihr dann drauf und wählt das Verzeichnis aus, wohin ihr das ZIP-Archiv entpackt hattet.
 
-Eine detailiertere entsprechende Anleitung gibt es auch nochmal [hier](https://support.google.com/chrome/a/answer/2714278?hl=de#:~:text=Rufen%20Sie%20chrome%3A%2F%2Fextensions,und%20w%C3%A4hlen%20Sie%20ihn%20aus.).
+Eine detailliertere entsprechende Anleitung gibt es auch nochmal [hier](https://support.google.com/chrome/a/answer/2714278?hl=de#:~:text=Rufen%20Sie%20chrome%3A%2F%2Fextensions,und%20w%C3%A4hlen%20Sie%20ihn%20aus.).
 
 [^2]: https://support.google.com/chrome_webstore/answer/2664769?hl=de#cke_bm_1361S
 
@@ -65,13 +65,23 @@ Ohne zu technisch zu werden liegt hier folgendes Problem zu Grunde: jedes Mal, w
 Noch bin ich zwar voller Enthusiasmus und versuche auf entsprechende Updates zu reagieren, aber es kann immer auch sein, dass ich was verpasse, keine Zeit hab, oder ich es einfach aufgebe.
 Fühlt euch aber frei ein [Issue](https://docs.github.com/de/issues) aufzumachen, wenn ihr mit irgendwelchen Problemen zu kämpfen habt.
 
+### Darf ich das add-on weiterschicken
+Ja, gerne!
+Darfst das sogar verändern, meinetwegen auch verkaufen, wenn Du es schaffst, jemandem Geld dafür aus den Rippen zu leiern.
+Du kannst das auch in einer tollen, neuen Erfindung verwenden und darauf ein Patent anmelden.
+Für mehr Informationen bezüglich Deiner Rechte und Pflichten in dem Zusammenhang, lies bitte die [Linzensinformationen](https://github.com/Michi03/Herdamit/blob/main/LICENSE).
+Auf jeden Fall, sind mir die folgenden Zwei Punkte wichtig:
+
+* Schick das Ding weiter, an wen Du willst
+* Ich gebe keinerlei Garantie und bin nicht schuld, wenn irgendwas nicht funktioniert oder das add-on irgendwas unvorhergesehenes macht
+
 ## Funktionsweise
-Die Funktionsweise ist abhängig von dem jeweiligen Verlag und ist daher entsprechend dieser im Folgenden unterteilt.
-Es werden zunächst in den jeweiligen Abschnitten erklärt, wie das add-on das Herunterladen vereinfacht und dann die Dateien erklärt, die den entsprechenden Code beinhalten, der auf der Webseite irgenwas macht.
+Die Funktionsweise ist abhängig von dem jeweiligen Verlag.
+Es wird daher zunächst in den jeweiligen Abschnitten erklärt, wie das add-on das Herunterladen vereinfacht und dann die Dateien erklärt, die den entsprechenden Code beinhalten, der auf der Webseite irgenwas macht.
 Darüber hinaus besteht die ***Herdamit***-Erweitung noch aus den folgenden Dateien:
 
 * [**icons**](https://github.com/Michi03/Herdamit/tree/master/icons) Hier liegen die Bilddateien für die Icons, die in der Erweiterung verwendet werden
-* [**manifest.json**](https://github.com/Michi03/Herdamit/blob/main/manifest.json) Diese Datei fungiert quasi als eine Art Index, wo der Name, die Version, eine kurze Beschreibung, die Zugriffsrechte, und anderes aufgelistet werden. Eine genauere Erklärung der Funktion dieser Datei findet ihr auch [hier](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension?retiredLocale=de#manifest.json) (leider nur auf Englisch)
+* [**manifest.json**](https://github.com/Michi03/Herdamit/blob/main/manifest.json) Diese Datei fungiert quasi als eine Art Index, wo der Name, die Version, eine kurze Beschreibung, die Zugriffsrechte, und Anderes aufgelistet werden. Eine genauere Erklärung der Funktion dieser Datei findet ihr auch [hier](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension?retiredLocale=de#manifest.json) (leider nur auf Englisch)
 
 ### Meiner
 
@@ -80,7 +90,7 @@ Für den Felix Meiner Verlag ist die folgende Code-Datei relevant [`meiner.js`](
 #### Was macht das add-on
 Der Meiner Verlag macht es uns einfach.
 Hier wird nämlich in dem e-Reader bereits das gesamte Buch im PDF-Format geladen.
-Es wird dann nur zusätzlich noch ein Inhaltsverzeichnis geladen, in der jeweils genau steht von welcher bis zu welcher Seite ein bestimmtes Kapitel geht.
+Es wird dann nur zusätzlich noch ein Inhaltsverzeichnis geladen, in dem jeweils genau steht von welcher bis zu welcher Seite ein bestimmtes Kapitel geht.
 Klickt man jetzt auf den Download (oder Drucken) -Button, wird einem die Möglichkeit gegeben *jeweils* jedes dieser Kapitel herunterzuladen (oder halt zu drucken).
 Das Skript macht daher einfach das: ändere im Inhaltsverzeichnis das erste Kapitel so, dass es bis zu derselben Seite wie das letzte Kapitel geht (anfangen tut es ja höchstwahrscheinlich schon auf Seite 1).
 Es wird außerdem die Beschreibung des ersten Kapitels (zutreffender Weise) zu **Gesamtes Buch** geändert.
@@ -90,4 +100,4 @@ Es wird außerdem die Beschreibung des ersten Kapitels (zutreffender Weise) zu *
 
 ## Noch fragen
 Wenn Du wirklich bis hier alles gelesen und immernoch nicht genug hast, würde ich Dir herzlichst empfehlen einfach selber Mal aktiv zu werden.
-Mozilla hat einen ziemlich guten [Einstiegs-Guide](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension) verfasst (nur nicht auf Deutsch), der Dir dabei helfen kann, einen eigenen Einstieg in extension-Entwicklung zu wagen.
+Mozilla hat einen ziemlich guten [Einstiegs-Guide](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension) verfasst (nur nicht auf Deutsch), der Dir dabei helfen kann, einen eigenen Einstieg in die extension-Entwicklung zu wagen.
