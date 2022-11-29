@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Herdamit",
+  "version": "1.1",
+  "description": "Macht lange Bücher über die ULB runterladen einfacher.",
+  "icons": {
+    "48": "icons/48.png",
+    "92": "icons/92.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meiner-elibrary.de/viewer2.0/pdfviewer/index/viewer*"],
+      "js": ["meiner.js"]
+    }
+  ]
+}
+
