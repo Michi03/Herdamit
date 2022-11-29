@@ -96,7 +96,147 @@ Das Skript macht daher einfach das: ändere im Inhaltsverzeichnis das erste Kapi
 Es wird außerdem die Beschreibung des ersten Kapitels (zutreffender Weise) zu **Gesamtes Buch** geändert.
 
 #### Code Zeile für Zeile
-***Kommt noch***
+Alle Zeilen, die mit zwei Slashes (`//`) anfangen sind **Kommentare**, also keine Anweisungen sondern lediglich für menschliche Leser:innen (Entwickler:innen), um besser zu verstehen, was an der jeweiligen Stelle passiert und warum.
+
+```JavaScript
+const TIMEOUT = 1000;
+```
+
+In der ersten Zeile definieren wir die Variable `TIMEOUT`.
+Der Ausdruck `const` bedeutet dabei, dass es sich um eine [Konstante](https://wiki.selfhtml.org/wiki/JavaScript/Variable/const) handelt, der Wert also an einer späteren Stelle im Code nicht mehr geändert werden kann.
+Diese Variable wird zwar erst etwas später wichtig, aber der Sinn ist der Folgende.
+Wir müssen zunächst warten, bis das Buch, bzw. das Inhaltsverzeichnis, komplett geladen wurde, bevor wir etwas daran ändern können.
+Der TIMEOUT gibt dabei an, wie regelmäßig wir versuchen, auf das Inhaltsverzeichnis zuzugreifen.
+
+```JavaScript
+const CHAPTER_SELECTOR = ".chapterListItem";
+```
+
+Hier wird definiert, woran das Skript diejenigen [HTML-Elemente](https://de.w3docs.com/html-lernen/html-elemente.html) (also quasi Bausteine der jeweiligen Webseite) erkennt, die das Inhaltsverzeichnis, bzw. die einzelnen Kapitel darin darstellen.
+
+```JavaScript
+function getChapters() {
+```
+
+Hier wird einfach eine [Funktion](https://wiki.selfhtml.org/wiki/JavaScript/Funktion) (ein Codeblock, der an einer späteren Stelle im Skript aufgerufen werden kann) mit dem Namen `getChapters` definiert, die keine [Parameter](https://wiki.selfhtml.org/wiki/JavaScript/Funktion#Funktionen_mit_Parametern) hat.
+Die geschweifte Klammer (`{`) zeigt den Anfang der Funktionsdefinition an.
+
+```JavaScript
+console.log("Waiting for chapters to load...");
+```
+
+Hier wird etwas auf der Konsole ausgegeben.
+Das ist quasi ein Kommentar während der Laufzeit.
+Derartige Ausgaben helfen beim [Debuggen](https://de.wikipedia.org/wiki/Debuggen), also der Diagnose und Beseitigung von fehlerhaftem Verhalten des Programms.
+Diese konkrete Ausgabe dient vor Allem dazu, anzuzeigen, dass die Funktion aufgerufen wurde.
+
+```JavaScript
+let chapters = document.querySelectorAll(CHAPTER_SELECTOR);
+```
+
+Hier definieren wir eine Variable `chapters`, die im Gegensatz zu den Konstanten oben tatsächlich einen variablen Wert hat (siehe [let](https://wiki.selfhtml.org/wiki/JavaScript/Variable/let)).
+Dieser Wert ist gleich dem Rückgabewert der Funktion [`querySelectorAll`](https://wiki.selfhtml.org/wiki/JavaScript/DOM/ParentNode/querySelectorAll) mit dem oben definierten `CHAPTER_SELECTOR` als Parameter.
+Wir wollen damit also die Kapitel-Elemente in der Variable `chapters` zwischenspeichern, um später wieder darauf zugreifen zu können.
+Die Funktion `querySelectorAll` gibt immer eine Liste (bzw einen [Array](https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Array/constructor)) zurück, also mehrere Elemente, was ja auch Sinn ergibt, das es (in aller Regel) mehrere Kapitel gibt.
+Das wird nachher nochmal wichtig.
+
+```JavaScript
+if (chapters.length < 1)
+```
+
+Hier haben wir eine [if-Anweisung](https://wiki.selfhtml.org/wiki/JavaScript/Verzweigung), d.h. das Skript verzweigt sich in seiner Ausführung entsprechend der angegebenen Bedingung.
+Dabei ist ja `chapters` die Liste mit unseren Kapiteln und `.length` gibt uns die Länge der Liste (also die Anzahl der Kapitel).
+Wir überprüfen also an dieser Stelle, ob unsere Liste weniger als ein Kapitel beinhaltet, sprich, ob sie leer ist.
+Wir unterstellen hier, dass das bedeutet, das Inhaltsverzeichnis wurde noch nicht geladen.
+Vielleicht kann man hier schon vermuten, dass dies (z.B. wenn der Selektor nicht mehr stimmt, weil der Code der Webseite geändert wurde) theoretisch eine falsche Annahme sein kann und folglich zu Problemen führen könnte.
+
+```JavaScript
+return setTimeout(getChapters, TIMEOUT);
+```
+
+Wenn die obige Bedingung erfüllt ist, unsere Liste also leer ist, setzen wir einen [Timeout](https://wiki.selfhtml.org/wiki/JavaScript/WindowOrWorkerGlobalScope/setTimeout), das bedeutet, wir warten eine bestimmte Zeit, die Zeit, die in der Konstanten `TIMEOUT` gespeichert ist, und rufen anschließend wieder die Funktion `getChapters` auf.
+Dies ist dann ein [rekursiver](https://de.wikipedia.org/wiki/Rekursive_Programmierung) Funktionsaufruf.
+Dies wiederholt sich solange die obige Bedingung erfüllt ist, wir also eine leere Liste an Kapiteln zurückbekommen, also (so nehmen wir an) das Inhaltsverzeichnis noch nicht geladen wurde.
+Mit `return` geben wir dann das entsprechende Ergebnis dieses rekursiven Funktionsaufrufs, der uns (hoffentlich irgendwann) die Kapitel zugänglich macht, als Ergebnis des Funktionsaufrufs zurück.
+***Ja lol, realtime-debugging beim Dokumentieren xD
+Mir fällt gerade auf, dass die `setTimeout` Funktion natürlich nicht das Ergebnis der angegebenen Funktion weitergibt, sondern eine ID, die auf den Timeout verweist.
+Das bedeutet, die Rekursion funktioniert so nicht.
+Das wird mit dem nächsten Update auf jeden Fall behoben.***
+
+```JavaScript
+return chapters;
+```
+
+Wenn unsere Liste mit Kapiteln zumindest ein Element enthält, geben wir die entsprechende Variable, in der diese zwischengespeichert wurde, zurück.
+
+```JavaScript
+}
+```
+
+Die geschlossene Klammer zeigt das Ende der Funktionsdefinition an.
+
+```JavaScript
+let chapters = getChapters();
+```
+
+Hier fängt unser Programm im Prinzip erst richtig an.
+Alles vorherige waren bisher nur Konstanten- und Funktionsdefinitionen.
+Wir speichern zunächst unsere Kapitel, die wir über die oben erläuterte Funktion erhalten in der Variable (etwas verwirrender Weise auch genannt) `chapters`.
+Die Klammern `()` zeigen dabei, dass wir die Funktion aufrufen (und keine Parameter übergeben).
+
+```JavaScript
+console.log("Got chapters", chapters);
+```
+
+Hier machen wir nochmal eine Ausgabe auf der Konsole, wo wir nachsehen können, welche Kapitel-Elemente wir jetzt tatsächlich durch die Funktion gefunden haben.
+
+```JavaScript
+chapters[0].dataset["to"] = chapters[chapters.length/2 - 1].dataset["to"];
+```
+
+Hier wird es eventuell etwas verwirrend.
+Also der Punkt ist, wir nehmen das erste Element der Kapitel-Liste (`chapters[0]`) und greifen darin auf ein bestimmtes [Attribut](https://wiki.selfhtml.org/wiki/HTML/Attribute/data-*) der mit dem Kapitel-Element verknüpften Datenpunkte zu, genannt `to`.
+Das zeigt an, bis zu welcher Seite des PDFs das entsprechende Kapitel geht.
+Wir ändern dabei den Wert dieses Attributs zu dem Wert des gleichen Attributs, aber desjenigen Elements, welches in der Liste an der Stelle `chapters.length/2 - 1` steht.
+Warum dieses Attribut?
+Also, was ich bisher nicht erzählt habe ist, die Kapitel-Liste hat zweimal genau die gleichen Kapitel (zumindest geht das Skript davon aus, dass dem so ist).
+Das erste sind die Kapitel aus dem Drucken-Menü und dann nochmal exakt die gleichen Kapitel für das Download-Menü (also der PDF-Download).
+Der Trick ist jetzt dieser.
+Der PDF-Download greift im Hintergrund (soweit ich das beurteilen kann) auf die Drucken-Funktion zu, daher müssen wir die Kapitel auch hier ändern.
+Da wir nun eine Liste mit zweimal genau den gleichen Elementen nacheinander haben, steht das letzte Element der Drucken-Liste an der letzten Stelle in der Liste, wenn wir sie in der Mitte durchschneiden würden.
+Daher `chapters.length/2`.
+Da die Indizierung der Listenelemente aber immer mit 0 anfängt (also `chapters[0]` ist das erste Element der Kapitel-Liste), müssen wir noch 1 abziehen, daher `chapters.length/2 - 1`.
+Wenn der Teil klar ist, ist der Rest ab hier auch offensichtlich.
+
+```JavaScript
+chapters[0].dataset["labelto"] = chapters[chapters.length/2 - 1].dataset["labelto"];
+```
+
+Hier haben wir jetzt noch ein zweites Attribut, genannt `labelto`.
+Was das genau ist, weiß ich selbst nicht, aber es funktioniert und wird in der Funktion, die beim Klicken des Download-Buttons aufgerufen wird, darauf zugegriffen.
+Deswegen ändere ich den Wert auch entsprechend dem letzten Kapitel-Element (in der Drucken-Liste).
+
+```JavaScript
+chapters[0].children[0].innerText = "Gesamtes Buch";
+```
+
+Hier wird jetzt noch der Beschreibungstext des ersten Kapitels in dem Menü geändert, damit auch klar wird, dass darüber das gesamte Buch heruntegeladen wird und nicht, wie ohne das add-on, nur das erste Kapitel.
+
+```JavaScript
+chapters[chapters.length/2].dataset["to"] = chapters[chapters.length - 1].dataset["to"];
+chapters[chapters.length/2].dataset["labelto"] = chapters[chapters.length - 1].dataset["labelto"];
+chapters[chapters.length/2].children[0].innerText = "Gesamtes Buch";
+```
+
+An der Stelle wiederholen wir das ganze Spiel jetzt nocheinmal für die tatsächliche PDF-Download-Liste.
+Hier ist natürlich das erste Kapitel jenes, welches auf das letzte Kapitel der vorherigen Listenhälfte (der Drucken-Liste) folgt.
+Dementsprechend `chapters.length/2` anstatt `chapters.length/2 - 1`.
+
+```JavaScript
+console.log("Successfully updated first chapter to download entire book");
+```
+
+Zum Abschluss schreiben wir noch eine zelebrierende Freudenbotschaft in die Konsole, um anzuzeigen, das alle Änderungen erfolgreich durchgeführt wurden und das Ende des Skripts, ohne vorher an einem Fehler hängenzubleiben, erreicht wurde.
 
 ## Noch fragen
 Wenn Du wirklich bis hier alles gelesen und immernoch nicht genug hast, würde ich Dir herzlichst empfehlen einfach selber Mal aktiv zu werden.
