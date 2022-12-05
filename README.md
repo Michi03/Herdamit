@@ -18,6 +18,8 @@ Ihr müsst dann einmal bestätigen, dass ihr das add-on installieren wollt und d
 
 * https://meiner-elibrary.de/viewer2.0/pdfviewer/index/viewer
 
+Leider funktioniert das anscheinend nicht immer.
+Also, wenn ihr auf den [Link oben](https://github.com/Michi03/Herdamit/releases/download/1.1/cdecc117410c4eb1a757-1.1.xpi) klickt und Firefox keine Installation startet, dann schreibt mir einfach eine Mail (`michael.kretschmer(at)uni-bonn.de`).
 Für weitere Informationen über Firefox-Erweiterungen würde ich euch einfach Mal an die entsprechende [Support-Seite](https://support.mozilla.org/de/kb/tipps-beurteilung-der-sicherheit-einer-erweiterung) verweisen.
 
 [^1]: https://www.statista.com/statistics/543218/worldwide-internet-users-by-browser/
