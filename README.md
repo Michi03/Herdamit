@@ -113,7 +113,7 @@ Darüber hinaus besteht die ***Herdamit***-Erweitung noch aus den folgenden Date
 * [**images**](https://github.com/Michi03/Herdamit/tree/master/images) Hier liegen die Bilder für diese Anleitung
 * [**icons**](https://github.com/Michi03/Herdamit/tree/master/icons) Hier liegen die Bilddateien für die Icons, die in der Erweiterung verwendet werden
 * [**manifest.json**](https://github.com/Michi03/Herdamit/blob/main/manifest.json) Diese Datei fungiert quasi als eine Art Index, wo der Name, die Version, eine kurze Beschreibung, die Zugriffsrechte, und Anderes aufgelistet werden. Eine genauere Erklärung der Funktion dieser Datei findet ihr auch [hier](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension?retiredLocale=de#manifest.json) (leider nur auf Englisch)
-* [**lib**] Hier liegen externe Code-Files, die von dem Add-On benutzt werden. Also Funktionalität, die ich nicht selbst implementiert habe.
+* [**lib**](https://github.com/Michi03/Herdamit/tree/master/lib) Hier liegen externe Code-Files, die von dem Add-On benutzt werden. Also Funktionalität, die ich nicht selbst implementiert habe.
 * [**scripts**](https://github.com/Michi03/Herdamit/tree/master/scripts) Hier liegen die Code-Files, die auf den jeweiligen Verlagsseiten das Buch-Runterladen vereinfachen. Und zwar gibt es da die folgenden...
 
 ### Meiner
@@ -284,6 +284,11 @@ Und zwar tun wir das immer und immer wieder.
 Wir haben ja schon gesehen, dass der Timer dann innerhalb der Funktion wieder abgemeldet wird, d.h. wir müssen gar nichts weiter machen und haben unser Skript damit fertig :)
 
 ### De Gruyter
+
+Für den De Gruyter Verlag ist die folgende Code-Datei relevant [`degruyter.js`](https://github.com/Michi03/Herdamit/blob/main/degruyter.js).
+
+#### Was muss gemacht werden
+
 De Gruyter ist da ganz ähnlich, nur ein bisschen nerviger.
 Hier gibt es nähmlich auch für jedes Kapitel einen eigenen Button, aber das Dokument wird Server-seitig zusammengefügt.
 Da haben wir keinen Zugriff drauf und es reicht nicht, innerhalb der Webseite Änderungen zu machen.
