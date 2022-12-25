@@ -4,6 +4,7 @@ Hier werden sonst gewisse Umwege von den Studierenden gefordert, wie das Herunte
 Bis jetzt unterstützen wir die folgenden Verläge:
 
 * [Felix Meiner Verlag](https://meiner-elibrary.de/)
+* [De Gruyter](https://www.degruyter.com/)
 * Ja lol, das war's schon... Kommt aber (vielleicht) bald mehr
 
 ## Installation
@@ -13,10 +14,25 @@ Ganz pauschal lässt sich das nicht beantworten, da es sich hier um eine [Browse
 
 ### Firefox
 Firefox-Nutzer:innen können sich glücklich schätzen.
-Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/download/1.1/cdecc117410c4eb1a757-1.1.xpi) klicken.
+Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/download/1.2/cdecc117410c4eb1a757-1.2.xpi) klicken.
 Ihr müsst dann einmal bestätigen, dass ihr das add-on installieren wollt und dann zustimmen, dass es auf "eure Daten" auf folgenden Seiten zugreifen darf.
 
-* https://meiner-elibrary.de/viewer2.0/pdfviewer/index/viewer
+* meiner-elibrary.de
+* degruyter.com
+
+***Alternative bei Problemen*** 
+Leider funktioniert das anscheinend nicht immer.
+Dann muss man folgendes machen.
+
+  * [Hier](https://github.com/Michi03/Herdamit/releases/download/1.2/cdecc117410c4eb1a757-1.2.xpi) ***rechts***klicken
+  * *Link speichern unter* auswählen
+  * Irgendwo auf dem PC abspeichern
+  * Firefox Add-On-Einstellungen aufmachen, dafür `about:addons` in die Adresszeile eingeben und Enter drücken (A im Bild unten)
+  * Dann oben rechts auf das kleine Zahnrad klicken (B)
+  * *Add-On von Datei installieren* auswählen (C)
+  * Die vorhin gespeicherte Datei aussuchen
+
+![Erweiterung von Datei installieren](images/install_from_file.png)
 
 Für weitere Informationen über Firefox-Erweiterungen würde ich euch einfach Mal an die entsprechende [Support-Seite](https://support.mozilla.org/de/kb/tipps-beurteilung-der-sicherheit-einer-erweiterung) verweisen.
 
@@ -24,12 +40,21 @@ Für weitere Informationen über Firefox-Erweiterungen würde ich euch einfach M
 
 ### Chromium (Chrome, Edge und co)
 Aber auch unter Chromium, sowie Google Chrome, wie es bei anderen Chromium-basierten Browsern aussieht weiß ich leider nicht, ist der Installationsprozess nicht allzu kompliziert.
-Ladet euch zunächst das [ZIP-Archiv](https://github.com/Michi03/Herdamit/archive/refs/tags/1.1.zip) runter und entpackt es irgendwo auf eurem Rechner.
+Ladet euch zunächst das [ZIP-Archiv](https://github.com/Michi03/Herdamit/archive/refs/tags/1.2.zip) runter und entpackt es irgendwo auf eurem Rechner.
 Ihr müsst dann in die Browser-Einstellungen (Settings) kommen, was für gewöhnlich über die drei Punkte im oberen rechten Rand des Browser-Fensters funktioniert und von da aus zu Erweiterungen (Extensions) navigieren[^2].
-*Wenn euch das zu kompliziert ist, solltet ihr auch einfach `chrome://extensions/` in die Adresszeile eingeben und Enter drücken können.*
-Man muss dann oben rechts über den Slider den **Entwicklermodus** aktivieren.
-Da sollte es dann einen Button **Entpackte Erweiterung laden** geben.
-Da klickt ihr dann drauf und wählt das Verzeichnis aus, wohin ihr das ZIP-Archiv entpackt hattet.
+*Wenn euch das zu kompliziert ist, solltet ihr auch einfach `chrome://extensions/` in die Adresszeile eingeben (siehe A im unteren Bild) und Enter drücken können.*
+Man muss dann oben rechts über den Slider den **Entwicklermodus** aktivieren (B im Bild unten).
+
+![Entwickler Modus aktivieren](images/activate_dev_mode.png)
+
+Da sollte es dann einen Button **Entpackte Erweiterung laden** geben (siehe C im Bild unten).
+Da klickt ihr dann drauf und wählt das Verzeichnis aus, wohin ihr das ZIP-Archiv entpackt hattet (siehe D) und klickt auf den Bestätigungs-Button, was auch immer da drauf steht (siehe E).
+
+![Erweiterung laden](images/load_extension.png)
+
+Wenn alles funktioniert hat, sollte es in etwa so aussehen.
+
+![Fertig](images/done.png)
 
 Eine detailliertere entsprechende Anleitung gibt es auch nochmal [hier](https://support.google.com/chrome/a/answer/2714278?hl=de#:~:text=Rufen%20Sie%20chrome%3A%2F%2Fextensions,und%20w%C3%A4hlen%20Sie%20ihn%20aus.).
 
@@ -75,13 +100,19 @@ Auf jeden Fall, sind mir die folgenden Zwei Punkte wichtig:
 * Schick das Ding weiter, an wen Du willst
 * Ich gebe keinerlei Garantie und bin nicht schuld, wenn irgendwas nicht funktioniert oder das add-on irgendwas unvorhergesehenes macht
 
+## Dankeschön an
+[Hopding](https://github.com/Hopding) für die nice [JavaScript PDF Bibliothek](https://github.com/Hopding/pdf-lib).
+
 ## Funktionsweise
 Die Funktionsweise ist abhängig von dem jeweiligen Verlag.
 Es wird daher zunächst in den jeweiligen Abschnitten erklärt, wie das add-on das Herunterladen vereinfacht und dann die Dateien erklärt, die den entsprechenden Code beinhalten, der auf der Webseite irgenwas macht.
 Darüber hinaus besteht die ***Herdamit***-Erweitung noch aus den folgenden Dateien:
 
+* [**images**](https://github.com/Michi03/Herdamit/tree/master/images) Hier liegen die Bilder für diese Anleitung
 * [**icons**](https://github.com/Michi03/Herdamit/tree/master/icons) Hier liegen die Bilddateien für die Icons, die in der Erweiterung verwendet werden
 * [**manifest.json**](https://github.com/Michi03/Herdamit/blob/main/manifest.json) Diese Datei fungiert quasi als eine Art Index, wo der Name, die Version, eine kurze Beschreibung, die Zugriffsrechte, und Anderes aufgelistet werden. Eine genauere Erklärung der Funktion dieser Datei findet ihr auch [hier](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension?retiredLocale=de#manifest.json) (leider nur auf Englisch)
+* [**lib**] Hier liegen externe Code-Files, die von dem Add-On benutzt werden. Also Funktionalität, die ich nicht selbst implementiert habe.
+* [**scripts**](https://github.com/Michi03/Herdamit/tree/master/scripts) Hier liegen die Code-Files, die auf den jeweiligen Verlagsseiten das Buch-Runterladen vereinfachen. Und zwar gibt es da die folgenden...
 
 ### Meiner
 
@@ -249,6 +280,20 @@ Als zweiten Schritt erstellen wir dann diesen bereits oben angedeuteten Timer, d
 Die Funktion [`setInterval`](https://wiki.selfhtml.org/wiki/JavaScript/WindowOrWorkerGlobalScope/setInterval) tut dabei folgendes: wir warten eine bestimmte Zeit, die Zeit, die in der Konstanten `TIMEOUT` gespeichert ist, und rufen anschließend die angegebene Funktion `updateChapters` auf.
 Und zwar tun wir das immer und immer wieder.
 Wir haben ja schon gesehen, dass der Timer dann innerhalb der Funktion wieder abgemeldet wird, d.h. wir müssen gar nichts weiter machen und haben unser Skript damit fertig :)
+
+### De Gruyter
+De Gruyter ist da ganz ähnlich, nur ein bisschen nerviger.
+Hier gibt es nähmlich auch für jedes Kapitel einen eigenen Button, aber das Dokument wird Server-seitig zusammengefügt.
+Da haben wir keinen Zugriff drauf und es reicht nicht, innerhalb der Webseite Änderungen zu machen.
+Stattdessen fügen wir über das Add-On einen neuen Button hinzu und verknüpfen diesen mit einer Funktion die folgendes macht:
+
+* Finde die Buttons, über die die Kapitel runtergeladen werden
+* Lade die Kapitel (als PDFs) runter
+* Füge alle PDFs in einem neuen Dokument zusammen
+* Lade dieses neue Dokument runter
+
+#### Gucken wir in den Code
+***Kommt noch***
 
 ## Noch fragen
 Wenn Du wirklich bis hier alles gelesen und immernoch nicht genug hast, würde ich Dir herzlichst empfehlen einfach selber Mal aktiv zu werden.
