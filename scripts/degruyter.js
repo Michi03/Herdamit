@@ -1,5 +1,5 @@
 const CHAPTER_SELECTOR = '.downloadPdf';
-const DOWNLOAD_BUTTON_CLASSES = ['btn', 'btn-main-content'];
+const DOWNLOAD_BUTTON_CLASSES = ['btn', 'btn-main-content', 'me-2', 'vgwort-click'];
 const DOWNLOAD_BUTTON_AREA_SELECTOR = '#bookContent';
 
 async function getChapterUrls() {
@@ -20,8 +20,14 @@ async function mergeAllPDFs(urls) {
     
     for (let i = 0; i < numDocs; i++) {
         let donorPdfBytes = await fetch(urls[i]).then(res => res.arrayBuffer());
-        let donorPdfDoc = await PDFLib.PDFDocument.load(donorPdfBytes);
-        let docLength = donorPdfDoc.getPageCount();
+        let donorPdfDoc, docLength;
+        try {
+            donorPdfDoc = await PDFLib.PDFDocument.load(donorPdfBytes);
+            docLength = donorPdfDoc.getPageCount();
+        } catch(err) {
+            console.log(err);
+            return;
+        }
         for (let k = 0; k < docLength; k++) {
             let [donorPage] = await pdfDoc.copyPages(donorPdfDoc, [k]);
             console.log("Doc " + i + ", page " + k);
@@ -34,10 +40,14 @@ async function mergeAllPDFs(urls) {
 }
 
 async function downloadPdf() {
-	downloadButton.innerHTML = "Das Buch wird runtergeladen, bitte einen Moment...";
+	downloadButton.innerHTML = 'Das Buch wird runtergeladen, bitte einen Moment...';
+	downloadButton.setAttribute('disabled', '');
 	const chapterUrls = await getChapterUrls();
         const pdfData = await mergeAllPDFs(chapterUrls);
-
+        if (!pdfData) {
+            downloadButton.innerHTML = 'Irgendwas ist leider schief gelaufen :/';
+            return;
+        }
 	// Create file with PDF content
         const pdfFile = new File([pdfData], document.title, {
             type: 'application/pdf',
@@ -54,12 +64,12 @@ async function downloadPdf() {
 	// Cleanup
         document.body.removeChild(pdfLink);
 	window.URL.revokeObjectURL(pdfUrl);
-	downloadButton.innerHTML = "Gesamtes Buch runterladen";
+	downloadButton.innerHTML = 'Download erfolgreich!';
 }
 
 console.log('Adding download button');
 const downloadButton = document.createElement('button');
-for (let i = 0; i < DOWNLOAD_BUTTON_CLASSES; i++) {
+for (let i = 0; i < DOWNLOAD_BUTTON_CLASSES.length; i++) {
     downloadButton.classList.add(DOWNLOAD_BUTTON_CLASSES[i]);
 }
 downloadButton.addEventListener('click', downloadPdf, false);
