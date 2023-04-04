@@ -1,13 +1,18 @@
-const CHAPTER_SELECTOR = '.downloadPdf';
-const DOWNLOAD_BUTTON_CLASSES = ['btn', 'btn-main-content', 'me-2', 'vgwort-click'];
-const DOWNLOAD_BUTTON_AREA_SELECTOR = '#bookContent';
+const CHAPTER_SELECTOR = '#followingChapters';
+const DOWNLOAD_BUTTON_CLASSES = ['toolbarButton'];
+const DOWNLOAD_BUTTON_AREA_SELECTOR = '#toolbarViewerRight';
+const CHAPTER_URL_PREFIX = 'https://content-select.com/media/display/';
+const CHAPTER_URL_KEY = '#chapter=';
 
 async function getChapterUrls() {
     console.log('Getting chapters...');
-    let chapters = document.querySelectorAll(CHAPTER_SELECTOR);
-    let chapterUrls = [];
-    for (let i = 0; i < chapters.length; i++) {
-        chapterUrls.push(chapters[i]);
+    let chapters = document.querySelector(CHAPTER_SELECTOR).children;
+    let bookUrl = CHAPTER_URL_PREFIX + chapters[0].children[0].href.split('/')[5];
+    let chapterUrls = [bookUrl];
+    for (let i = 1; i < chapters.length; i++) {
+    	let url = chapters[i].children[0].href;
+        let id = url.split(CHAPTER_URL_KEY)[1].split('&')[0];
+        chapterUrls.push(bookUrl + '/' + id);
     }
     console.log(`Got ${chapterUrls.length} chapters`);
     return chapterUrls;
@@ -72,6 +77,7 @@ const downloadButton = document.createElement('button');
 for (let i = 0; i < DOWNLOAD_BUTTON_CLASSES.length; i++) {
     downloadButton.classList.add(DOWNLOAD_BUTTON_CLASSES[i]);
 }
+downloadButton.style = 'width:15em';
 downloadButton.addEventListener('click', downloadPdf, false);
 downloadButton.innerHTML = "Gesamtes Buch runterladen";
-document.querySelector(DOWNLOAD_BUTTON_AREA_SELECTOR).childNodes[3].childNodes[3].appendChild(downloadButton);
+document.querySelector(DOWNLOAD_BUTTON_AREA_SELECTOR).insertBefore(downloadButton, document.querySelector(DOWNLOAD_BUTTON_AREA_SELECTOR).firstChild);
