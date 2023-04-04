@@ -1,11 +1,11 @@
 # Herdamit
-Dieses kleine Programm ist dafür da, um das Herunterladen von Büchern im PDF-Format über besonder unkooperative Verläge (z.B. Felix Meiner) einfacher zu gestalten.
+Dieses kleine Programm ist dafür da, um das Herunterladen von Büchern im PDF-Format über besonder unkooperative Verläge einfacher zu gestalten.
 Hier werden sonst gewisse Umwege von den Studierenden gefordert, wie das Herunterladen einzelner Kapitel und anschließende manuelle Zusammenführen über PDF-Editoren.
 Bis jetzt unterstützen wir die folgenden Verläge:
 
 * [Felix Meiner Verlag](https://meiner-elibrary.de/)
 * [De Gruyter](https://www.degruyter.com/)
-* Ja lol, das war's schon... Kommt aber (vielleicht) bald mehr
+* [Content Select](https://content-select.com/de/) (Ist zwar kein Verlag, aber das ignorieren wir hier mal)
 
 ## Installation
 Das Wichtigste zuerst: wie installiere ich den Bums?
@@ -14,17 +14,18 @@ Ganz pauschal lässt sich das nicht beantworten, da es sich hier um eine [Browse
 
 ### Firefox
 Firefox-Nutzer:innen können sich glücklich schätzen.
-Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/download/1.2/cdecc117410c4eb1a757-1.2.xpi) klicken.
+Ihr könnt einfach [**hier**](https://github.com/Michi03/Herdamit/releases/download/1.3/cdecc117410c4eb1a757-1.3.xpi) klicken.
 Ihr müsst dann einmal bestätigen, dass ihr das add-on installieren wollt und dann zustimmen, dass es auf "eure Daten" auf folgenden Seiten zugreifen darf.
 
 * meiner-elibrary.de
 * degruyter.com
+* content-select.com
 
 ***Alternative bei Problemen*** 
 Leider funktioniert das anscheinend nicht immer.
 Dann muss man folgendes machen.
 
-  * [Hier](https://github.com/Michi03/Herdamit/releases/download/1.2/cdecc117410c4eb1a757-1.2.xpi) ***rechts***klicken
+  * [Hier](https://github.com/Michi03/Herdamit/releases/download/1.3/cdecc117410c4eb1a757-1.3.xpi) ***rechts***klicken
   * *Link speichern unter* auswählen
   * Irgendwo auf dem PC abspeichern
   * Firefox Add-On-Einstellungen aufmachen, dafür `about:addons` in die Adresszeile eingeben und Enter drücken (A im Bild unten)
@@ -75,7 +76,8 @@ Bzw. was ich mir vorstelle, was häufige Fragen/Probleme sein könnten (/werden)
 
 ### Willst Du mich hacken?
 Wahrscheinlich nicht.
-Ich hab damit auch keine Erfahrung, Indi... hm... Ehrenwort!
+Ich hab damit auch keine Erfahrung.
+Ehrenwort!
 Misstrauen ist aber natürlich erstmal richtig und wichtig.
 Insofern, solltest Du Dir diese Frage gestellt haben, sehr gut!
 Ich erkläre etwas weiter unten auch ein bisschen ausführlicher, wie das add-on funktioniert, vielleicht reicht das ja schon, um Dein vertrauen zu gewinnen.
@@ -294,6 +296,23 @@ Stattdessen fügen wir über das Add-On einen neuen Button hinzu und verknüpfen
 
 #### Gucken wir in den Code
 ***Kommt noch***
+
+### Content Select
+Content Select funktioniert im Prinzip genauso, nur nochmal ein bisschen nerviger.
+Die Button hier laden nämlich nicht direkt das Kapitel runter, sondern führen auf eine andere Seite, in der das PDF eingebettet ist.
+Die gute Nachricht: das PDF wird über eine Anfrage an eine bestimmte URL geladen.
+Die noch bessere Nachricht: diese URL ist ziemlich einfach zu erraten.
+Details sind hier nicht mega wichtig, aber im Prinzip wird jedes Kapitel über eine ID-Nummer referenziert und die können wir benutzen, um die PDF-Daten runterzuladen.
+Damit müssen wir also Folgendes tun:
+
+* Finde die Buttons, mit denen man das angezeigt Kapitel wechseln kann
+* Lies die ID-Nummer der jeweiligen Kapitel aus den Buttons aus
+* Konstruiere damit die URL, um die jeweiligen Kapitel runterzuladen
+* Füge alle PDFs in einem neuen Dokument zusammen
+* Lade dieses neue Dokument runter
+
+#### Mehr Code
+***Oh, bin etwas im Rückstand... Sorry***
 
 ## Noch fragen
 Wenn Du wirklich bis hier alles gelesen und immernoch nicht genug hast, würde ich Dir herzlichst empfehlen einfach selber Mal aktiv zu werden.
