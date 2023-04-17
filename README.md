@@ -36,14 +36,14 @@ Dann muss man folgendes machen.
 ![Erweiterung von Datei installieren](images/install_from_file.png)
 
 Leider funktioniert das anscheinend nicht immer.
-Also, wenn ihr auf den [Link oben](https://github.com/Michi03/Herdamit/releases/download/1.1/cdecc117410c4eb1a757-1.1.xpi) klickt und Firefox keine Installation startet, dann schreibt mir einfach eine Mail (`michael.kretschmer(at)uni-bonn.de`).
+Also, wenn ihr auf den [Link oben](https://github.com/Michi03/Herdamit/releases/download/1.3/cdecc117410c4eb1a757-1.3.xpi) klickt und Firefox keine Installation startet, dann schreibt mir einfach eine Mail (`michael.kretschmer(at)uni-bonn.de`).
 Für weitere Informationen über Firefox-Erweiterungen würde ich euch einfach Mal an die entsprechende [Support-Seite](https://support.mozilla.org/de/kb/tipps-beurteilung-der-sicherheit-einer-erweiterung) verweisen.
 
 [^1]: https://www.statista.com/statistics/543218/worldwide-internet-users-by-browser/
 
 ### Chromium (Chrome, Edge und co)
 Aber auch unter Chromium, sowie Google Chrome, wie es bei anderen Chromium-basierten Browsern aussieht weiß ich leider nicht, ist der Installationsprozess nicht allzu kompliziert.
-Ladet euch zunächst das [ZIP-Archiv](https://github.com/Michi03/Herdamit/archive/refs/tags/1.2.zip) runter und entpackt es irgendwo auf eurem Rechner.
+Ladet euch zunächst das [ZIP-Archiv](https://github.com/Michi03/Herdamit/archive/refs/tags/1.3.zip) runter und entpackt es irgendwo auf eurem Rechner.
 Ihr müsst dann in die Browser-Einstellungen (Settings) kommen, was für gewöhnlich über die drei Punkte im oberen rechten Rand des Browser-Fensters funktioniert und von da aus zu Erweiterungen (Extensions) navigieren[^2].
 *Wenn euch das zu kompliziert ist, solltet ihr auch einfach `chrome://extensions/` in die Adresszeile eingeben (siehe A im unteren Bild) und Enter drücken können.*
 Man muss dann oben rechts über den Slider den **Entwicklermodus** aktivieren (B im Bild unten).
